@@ -21,6 +21,18 @@ public class DataController {
 	@Autowired
 	private DataService dataService;
 
+	/**
+	 * 
+	* @Title: lovely  
+	* @Description: TODO(这里用一句话描述这个方法的作用)  
+	* @param @param pageSize
+	* @param @param pageNum
+	* @param @return
+	* @param @throws Exception    参数  
+	* @return ResultBean    返回类型  
+	* @throws
+	* 	https://gank.io/api/data/%E7%A6%8F%E5%88%A9/2/1
+	 */
 	@RequestMapping("/lovely/{pageSize}/{pageNum}")
 	public ResultBean lovely(@PathVariable("pageSize") String pageSize, @PathVariable("pageNum") String pageNum)
 			throws Exception {
