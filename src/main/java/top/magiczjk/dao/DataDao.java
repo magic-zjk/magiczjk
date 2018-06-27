@@ -24,10 +24,12 @@ public class DataDao extends BasicDAO<Lovely, Datastore> {
 	}
 
 	public List<Lovely> getLovelys(String pageSize, String pageNum) {
+		Integer ps = Integer.valueOf(pageSize);
+		Integer pn = Integer.valueOf(pageNum);
 		Query<Lovely> q = getDatastore().createQuery(Lovely.class);
 		FindOptions options = new FindOptions();
-		options.skip(Integer.valueOf(pageNum));
-		options.limit(Integer.valueOf(pageSize));
+		options.skip(ps*(pn-1));
+		options.limit(ps);
 		q.order("-createdAt");
 		List<Lovely> asList = q.asList(options);
 		return asList;
