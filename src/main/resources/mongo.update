@@ -1,0 +1,25 @@
+#更新多文本日期的操作
+db.Lovely.find().forEach(function(item){
+	var t = item.createdAt;
+        function tran_val(val){
+            if(parseInt(val)<10){
+                val="0" +val;
+            }
+            return val;
+        }
+        var datenew = new Date(t);
+        var year=datenew.getFullYear(); 
+        var month=tran_val(datenew.getMonth()+1);
+        var date=tran_val(datenew.getDate());
+        var hour=tran_val(datenew.getHours());
+        var minute=tran_val(datenew.getMinutes()); 
+        var second=tran_val(datenew.getSeconds()); 
+        var datastr=year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
+	print(datastr);
+
+	item.createdAt = datastr;
+	db.Lovely.save(item);
+});
+
+#更新单个
+db.Lovely.update({url:'http://p9g39ejeg.bkt.clouddn.com/180628_bc1619c8-64e5-4da4-b3e1-4a783c8f18cc.jpeg'},{$set:{"createdAt":"2018-01-30 22:51:51"}})

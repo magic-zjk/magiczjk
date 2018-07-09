@@ -1,5 +1,6 @@
 package top.magiczjk.controller;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class UploadController {
 			String s = qnUploadService.uploadPicture(file.getBytes(), filename);
 			// 保存数据库
 			Lovely lovely = new Lovely();
-			lovely.setCreatedAt(createTime);
+			lovely.setCreatedAt(DateUtils.format(DateUtils.REGULAR_DATE_REGX, new Date(createTime)));
 			lovely.setUrl("http://p9g39ejeg.bkt.clouddn.com/" + s);
 			dataService.save(lovely);
 		} else {
